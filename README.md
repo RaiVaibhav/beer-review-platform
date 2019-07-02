@@ -1,6 +1,6 @@
 # Beer Review App
 
-- A platform which is build on top of Angular 7 and Django 2.1.2 and helps user in review their experience with beers and track record of all their previous experience.
+- A platform which is build on top of Angular 7 and Django 2.1.2 and helps user in review their experience with beers and track record of all their previous reviews.
 - Start app `Register > Verify account (use backend/django logs) > Login >     Review`.
 - Backend endpoints are authenticated using [`djangorestframework-jwt`](https://github.com/GetBlimp/django-rest-framework-jwt)
 
