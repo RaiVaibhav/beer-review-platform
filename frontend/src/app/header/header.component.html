@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="logo" routerLink=""></span>
+    <span class="example-spacer"></span>
+    <mat-menu #unAuthMenu="matMenu">
+      <a *ngIf="!(authState | async).user" routerLink="register" class="nolink"><button mat-menu-item color="primary">Register</button></a>
+      <a *ngIf="!(authState | async).user" routerLink="reset" class="nolink"><button mat-menu-item color="primary">Forgot Password</button></a>
+      <a *ngIf="!(authState | async).user" routerLink="login" class="nolink"><button mat-menu-item color="primary">Login</button></a>
+    </mat-menu>
+    <mat-menu #reviewMenu="matMenu">
+      <a *ngIf="(authState | async).user" routerLink="create-review" class="nolink"><button mat-menu-item color="primary">Create Rview</button></a>
+      <a *ngIf="(authState | async).user" routerLink="review-list" class="nolink"><button mat-menu-item color="primary">All Reviews</button></a>
+    </mat-menu>
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item (click)="logout()" *ngIf="(authState | async).user">Logout</button>
+      <a *ngIf="(authState | async).user" routerLink="profile" class="nolink"><button mat-menu-item color="primary">Profile</button></a>
+      <button xPosition="before" yPostion="before" *ngIf="(authState | async).user" mat-menu-item [matMenuTriggerFor]="reviewMenu">Review</button>
+    </mat-menu>
+    <button mat-icon-button *ngIf="(authState | async).user" [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="!(authState | async).user" [matMenuTriggerFor]="unAuthMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

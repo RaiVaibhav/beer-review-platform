@@ -1,0 +1,100 @@
+<div style="margin-bottom: 19px;">
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+        <h2 style="margin-bottom: 0px;">Register</h2>
+    </div>
+</div>
+
+<mat-card fxLayout="column" fxLayoutAlign="start">
+
+  <form (keydown.enter)="$event.preventDefault()" fxLayout="column" fxLayoutAlign="flex-start flex-start" style="font-size: .8em;" [formGroup]="ReviewForm" (ngSubmit)='onSubmit()'>
+
+  <mat-form-field>
+    <mat-label>Select Bear</mat-label>
+    <mat-select formControlName="bear" required>
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let bear of bears" [value]="bear.id">
+        {{bear.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="ReviewForm.controls.bear.hasError('required')">Please choose an bear</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-label>Brewer Name</mat-label>
+    <input
+      type="text"
+      id="brewername"
+      formControlName="brewername"
+      placeholder="Brewer name*"
+      matInput
+      name="brewername">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Bear Price</mat-label>
+    <span matPrefix>$ &nbsp;</span>
+    <input
+      type="number"
+      matInput
+      placeholder="Price*"
+      name="price"
+      formControlName="price"
+      min="0">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-label>Rating</mat-label>
+    <mat-select formControlName="rating" required>
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let rating of ratings" [value]="rating.id">
+        {{ rating.name }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="ReviewForm.controls.rating.hasError('required')">Please select an rating</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-label>Serving type</mat-label>
+    <mat-select formControlName="serving" required>
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let serving of servings" [value]="serving.id">
+        {{serving.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="ReviewForm.controls.serving.hasError('required')">Please select an Serving type</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-label>Add flavors</mat-label>
+    <input
+      type="text"
+      id="flavors"
+      formControlName="flavors"
+      placeholder="Flavors*"
+      matInput
+      name="flavors"
+      (keyup.enter)="addFlavor($event)"
+      >
+     <mat-error *ngIf="ReviewForm.controls.flavors.hasError('listEmpty')">Please add flavors</mat-error>
+  </mat-form-field>
+    <div class="tag-list">
+      <span *ngFor="let flavor of flavorsList"
+        class="tag-default tag-pill flavors">
+        <mat-icon aria-label="Delete flavor" (click)="removeFlavor($event, flavor)">close</mat-icon>
+        {{ flavor }}
+      </span>
+    </div>
+  <br>
+  <button type="submit" mat-raised-button color="primary">Submit</button>
+  </form>
+  <br>
+  <div>
+    <small><a routerLink="/review-list">Review List?</a></small> 
+  </div>
+</mat-card>
+
+

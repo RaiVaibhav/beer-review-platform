@@ -1,0 +1,37 @@
+<div style="margin-bottom: 19px;">
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+        <h2 style="margin-bottom: 0px;">Login</h2>
+    </div>
+</div>
+
+<mat-card fxLayout="column" fxLayoutAlign="start" style="margin-bottom: 25px;">
+
+  <form fxLayout="column" fxLayoutAlign="flex-start flex-start" style="font-size: .8em;" [formGroup]="loginForm" (ngSubmit)='onSubmit()'>
+
+    <mat-form-field>
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        placeholder="Username"
+        matInput
+        name="username">
+      <mat-error *ngIf="loginForm.controls.username.hasError('required')">Field must not be empty.</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        placeholder="Password"
+        name="password"
+        formControlName="password">
+      <mat-error *ngIf="loginForm.controls.password.hasError('required')">Field must not be empty.</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+  </form>
+  <br>
+  <small><a routerLink="/reset">Forgot Password?</a></small>
+  <br>
+  <small><a routerLink="/register">Register?</a></small> 
+</mat-card>

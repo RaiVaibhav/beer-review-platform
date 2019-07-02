@@ -1,0 +1,45 @@
+<div style="display: flex; flex-flow: row wrap;" *ngIf="reviews.length!==0">
+  <ng-container *ngFor="let review of reviews">
+    <mat-card style="max-width: 300px; margin: 5px auto;" class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ review.bear.name }}</mat-card-title>
+        <mat-card-subtitle> Bewer: {{ review.bewer_name }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="https://images.unsplash.com/photo-1518176258769-f227c798150e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Photo of a Beer">
+      <mat-card-content>
+        <ng-container *ngFor="let i of [1,2,3,4,5]">
+          <mat-icon *ngIf="i<=review.rating">star_rate</mat-icon>
+          <mat-icon *ngIf="!(i<=review.rating)">star_border</mat-icon>
+        </ng-container>
+        <ng-container>
+          <h3>Price: ${{ review.price }}</h3>
+        </ng-container>
+        <ng-container>
+          <h3>Serving: {{ servings[review.serving].name }}</h3>
+        </ng-container>
+        <div>
+          <h3>Flavor Description</h3>
+          {{ review.flavorList.join(', ')}}
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</div>
+<div *ngIf="reviews.length===0">
+  <div style="margin-bottom: 19px;">
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+        <h2 style="margin-bottom: 0px;">No review found</h2>
+        <a routerLink="create-review"><button mat-stroked-button color="primary" >Create Review</button></a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf='key'>
+  <div style="margin-bottom: 19px;">
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+        <h2 style="margin-bottom: 0px;">No review found, kindly create a review</h2>
+        <a routerLink="create-review"><button mat-stroked-button color="primary" >Create review</button></a>
+    </div>
+  </div>
+</div>

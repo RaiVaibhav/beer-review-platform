@@ -1,0 +1,13 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.logo{
+  background-image: url(https://png2.kisspng.com/sh/c24fb2aea3f078d7f33c79bbc4411ad6/L0KzQYm3UcI2N6dmiZH0aYP2gLBuTfJmbaMygdV4bj3ndcTwhB4ucZR0hp9rZXX1PYboVvEyQGY2faNsMXS2PoaBVsY4OWc4Sac6NkmzQoWBUckzPGgziNDw/kisspng-beer-icon-design-icon-beer-5a6a1851e1c1d3.5866716315169024819247.png);
+  background-size: cover;
+  cursor: pointer;
+  height: 40px;
+  display: inline-block;
+  width: 40px;
+
+}

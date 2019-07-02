@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <app-header></app-header>
+
+
+    <div style="margin: 5px 25px;">
+      <div fxLayout="column" fxLayoutAlign="center center" *ngIf="(isLoading | async).isLoading; else myrouter">
+        <mat-spinner></mat-spinner>
+      </div>
+      <ng-template #myrouter>
+        <router-outlet [hidden]="(isLoading | async).isLoading"></router-outlet>
+      </ng-template>
+    </div>
+
+
+
+  </body>
+</html>

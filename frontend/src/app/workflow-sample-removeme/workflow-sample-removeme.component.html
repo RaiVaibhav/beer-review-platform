@@ -1,0 +1,17 @@
+<main style="width: 100%;">
+    <div style="margin-bottom: 19px;">
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+            <h2 style="margin-bottom: 0px;">Suggested User Workflow</h2>
+        </div>
+        <div>
+            Kindly Register > Verify account (check server/django logs) > Login > Create a review > List Review
+        </div>
+    </div>
+    <div>
+        <a *ngIf="(authState | async).user" routerLink="create-review"><button mat-stroked-button color="primary">Create review</button></a>
+        <a *ngIf="(authState | async).user" routerLink="review-list"><button mat-stroked-button color="primary">Review list</button></a>
+    </div>
+    <div>
+        <a *ngIf="!(authState | async).user" routerLink="login"><button mat-stroked-button color="primary">Login</button></a>
+    </div>
+</main>

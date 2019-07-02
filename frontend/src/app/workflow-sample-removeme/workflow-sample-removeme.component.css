@@ -1,0 +1,50 @@
+button, a{margin-bottom: 10px;}
+.disabled {
+    pointer-events: none;
+    cursor: default;
+ }
+a, button{
+    margin-bottom: 0;
+}
+
+ .ml{
+     margin-left: 10px;
+ }
+
+ .leftborder{
+     padding-left: 10px;
+     border-left: 1px solid grey;
+ }
+
+ .rotate45{
+    transform: rotate(45deg);
+ }
+ .rotateNeg45{
+    transform: rotate(-45deg);
+ }
+
+ .red{color: red;}
+ .blue{color: blue;}
+
+ hr{
+     margin-top: 20px;
+     margin-bottom: 20px;
+ }
+
+
+ .email-step{
+    /* border: 1px solid currentColor; */
+    padding: 0 15px;
+    line-height: 34px;
+    overflow: hidden;
+    font-family: Roboto;
+    font-size: 14px;
+ }
+ .email-step-description{
+    /* border: 1px solid currentColor; */
+    padding: 0 15px;
+    overflow: hidden;
+    font-family: Roboto;
+    font-size: 14px;
+    text-align: center;
+ }

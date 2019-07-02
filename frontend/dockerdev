@@ -1,0 +1,27 @@
+# base image
+FROM node:latest
+
+# set working directory
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+COPY package.json /usr/src/app/package.json
+RUN npm install
+RUN npm install -g @angular/cli@7.0.3
+
+
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "vim"]
+
+
+# add app
+ COPY . /usr/src/app
+
+# start app
+# CMD ng serve --port 4200 --host 0.0.0.0
+# expose the port to detect changes
+# EXPOSE 4200 49153

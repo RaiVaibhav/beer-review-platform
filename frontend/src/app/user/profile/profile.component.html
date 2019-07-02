@@ -1,0 +1,20 @@
+<div style="margin-bottom: 19px;">
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+        <h2 style="margin-bottom: 0px;">Profile Page</h2>
+    </div>
+    <div class="small">Profile page info here.</div> 
+</div>
+
+<mat-card fxLayout="row">
+    <div fxFlex>
+        <h3 style="margin-top: 0; margin-bottom: 10px;">Hello</h3>
+        <h4 style="margin-top: 0;">{{ (authState | async).user.username }}</h4>
+
+        <a *ngIf="(authState | async).user" [routerLink]="['/change-password']" class="nolink"><button mat-stroked-button color="primary">Change Password</button></a>
+    </div> 
+
+    <div fxFlex class="" style="text-align: right;">
+        <img class="profile_image" src="/assets/img/profile.jpg" alt="">
+    </div>
+</mat-card>
+

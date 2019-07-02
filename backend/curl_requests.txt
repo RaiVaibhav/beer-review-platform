@@ -1,0 +1,1 @@
+curl -d "key=NTQ:1gLa44:S1fUb8KK2HjQpObBOCu4ZxJeuTo" -X POST http://localhost:9000/rest-auth/registration/verify-email/

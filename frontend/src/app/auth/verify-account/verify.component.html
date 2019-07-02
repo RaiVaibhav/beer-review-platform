@@ -1,0 +1,38 @@
+<div *ngIf='!key'>
+  <div style="margin-bottom: 19px;">
+      <div fxLayout="row" fxLayoutAlign="space-between center" >
+          <h2 style="margin-bottom: 0px;">Verify your account</h2>
+      </div>
+      <small>Copy and paste the last bit of the url sent via Django command line - something like "NQ:1glcMY:Ny0tARdvf-foqOknJg1NZBNCsxs".</small>  
+  </div>
+
+  <mat-card fxLayout="row" fxLayoutAlign="start">
+
+    <form fxLayout="column" class="" style="width: 100%;" fxLayoutAlign="flex-start flex-start" [formGroup]="keyForm" (ngSubmit)='onSubmit()'>
+
+      <mat-form-field style="width: 100%; max-width: 1000px;">
+        <input
+          type="text"
+          matInput
+          placeholder="Key"
+          name="key"
+          formControlName="key"
+          >
+      </mat-form-field>
+      <br>
+      <mat-error *ngIf="keyForm.controls.key.hasError('required')">Field must not be empty.</mat-error>
+      <button type="submit" mat-raised-button color="primary">Verify</button>
+    </form>
+  </mat-card>
+  <br>
+</div>
+
+
+<div *ngIf='key'>
+  <div style="margin-bottom: 19px;">
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+        <h2 style="margin-bottom: 0px;">Thanks for verifying your account!</h2>
+        <a routerLink="login"><button mat-stroked-button color="primary" >Login</button></a>
+    </div>
+  </div>
+</div>

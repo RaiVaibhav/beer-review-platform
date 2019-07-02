@@ -1,0 +1,10 @@
+.flavors{
+  color: #3f51b5;
+  border: 2px solid;
+  border-radius: 5px;
+  font-size: initial;
+  align-items: center;
+  display: inline-flex;
+  padding-right: 5px;
+  margin-right: 5px;
+}

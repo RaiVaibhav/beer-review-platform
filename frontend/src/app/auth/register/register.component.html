@@ -1,0 +1,56 @@
+<div style="margin-bottom: 19px;">
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+        <h2 style="margin-bottom: 0px;">Register</h2>
+    </div>
+</div>
+
+<mat-card fxLayout="row" fxLayoutAlign="start">
+
+  <form fxLayout="column" fxLayoutAlign="flex-start flex-start" style="font-size: .8em;" [formGroup]="signupForm" (ngSubmit)='onSubmit()'>
+
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="Email*"
+        name="email"
+        formControlName="email"
+        >
+        <mat-error *ngIf="signupForm.controls.email.hasError('required')">Field must not be empty.</mat-error>
+        <mat-error *ngIf="signupForm.controls.email.hasError('email')">Email is invalid.</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        placeholder="Username*"
+        matInput
+        name="username">
+      <mat-error *ngIf="signupForm.controls.username.hasError('required')">Field must not be empty.</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        placeholder="Password*"
+        name="password1"
+        formControlName="password1">
+      <mat-error *ngIf="signupForm.controls.password1.hasError('required')">Field must not be empty.</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        placeholder="Password Again*"
+        name="password2"
+        formControlName="password2">
+      <mat-error *ngIf="signupForm.controls.password2.hasError('required')">Field must not be empty.</mat-error>
+    </mat-form-field>
+    <br>
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+  </form>
+</mat-card>
