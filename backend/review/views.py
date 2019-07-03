@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.parsers import FileUploadParser
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
@@ -11,7 +12,7 @@ from rest_framework import status, generics
 
 class ReviewListAPIView(APIView):
   permission_classes = (IsAuthenticated,)
-
+  parser_class = (FileUploadParser,)
   def get(self, request, format=None):
       reviews = Review.objects.all()
       serializer = ReviewListSerializer(reviews, many=True)
@@ -26,7 +27,7 @@ class ReviewListAPIView(APIView):
 
 class ReviewDetail(APIView):
   permission_classes = (IsAuthenticated,)
-
+  parser_class = (FileUploadParser,)
   def get_object(self, pk):
       try:
           return Review.objects.get(pk=pk)

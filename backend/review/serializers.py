@@ -15,13 +15,13 @@ class ReviewListSerializer(ModelSerializer):
   flavorList = FlavorRelatedField(many=True, source='flavors')
   class Meta:
     model = Review
-    fields = ('id', 'bear', 'flavorList', 'bewer_name', 'price', 'rating', 'serving')
+    fields = ('id', 'bear','beer_image', 'flavorList', 'bewer_name', 'price', 'rating', 'serving')
 
 class ReviewCeateSerializer(ModelSerializer):
   flavorList = FlavorRelatedField(many=True, source='flavors')
   class Meta:
     model = Review
-    fields = ('id', 'bear','flavorList', 'bewer_name', 'price', 'rating', 'serving')
+    fields = ('id', 'bear','beer_image','flavorList', 'bewer_name', 'price', 'rating', 'serving')
     def create(self, validated_data):
       user = self.context.get('user', None)
 

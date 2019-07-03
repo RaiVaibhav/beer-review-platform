@@ -20,6 +20,7 @@ class Review(models.Model):
     (3, 'Bottle'),
     (4, 'Can'),
   ]
+  beer_image = models.FileField(blank=False, null=False)
   bear = models.ForeignKey(Bear, on_delete=models.PROTECT)
   user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
   bewer_name = models.CharField(max_length=200)
