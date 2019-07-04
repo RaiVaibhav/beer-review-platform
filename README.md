@@ -49,11 +49,11 @@ Currently this plaatform don't give a option to upload the image of the beer dur
 - Custome django command to populate the bear names.
 
 
-*Update* - Added beta version of file upload capability (using media storage)
-*Update* - Add s3 support for the image upload (under progress - add auth support for image url from s3) option to run it- 
+- *Update* -> Added beta version of file upload capability (using media storage)
+- *Update* -> Add s3 support for the image upload (under progress - add auth support for image url from s3) option to run it- 
 
 
-- First enable the created virtual environment, reinstall requirements using
+First enable the created virtual environment, reinstall requirements using
 
 ```bash
 
