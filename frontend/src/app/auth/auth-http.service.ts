@@ -14,7 +14,7 @@ export class AuthHttpService{
               private store: Store<fromApp.AppState>){}
 
   private rootdomain                  =    'http://localhost:8000/';
-
+  private domain                      =    'http://localhost:8000';
   private djangoRegister              =    this.rootdomain + 'rest-auth/registration/';
   private djangoVerify                =    this.rootdomain + 'rest-auth/registration/verify-email/';
   private djangoLogin                 =    this.rootdomain + 'rest-auth/login/';

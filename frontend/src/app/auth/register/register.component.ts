@@ -50,7 +50,6 @@ export class RegisterComponent implements OnInit {
             this.store.dispatch(new UIActions.SnackBar(`Verification email has been send`));
           },
           (err)=>{
-            debugger;
             this.store.dispatch(new UI.StopLoading()),
             this.store.dispatch(new UIActions.SnackBar(`Error: ${err.error.email? err.error.email: err.error.username}`));
           });

@@ -19,7 +19,8 @@
     <mat-error *ngIf="ReviewForm.controls.bear.hasError('required')">Please choose an bear</mat-error>
   </mat-form-field>
   <br>
-
+    <input type="file" name="beer_image" (change)="onChange($event)" />
+  <br>
   <mat-form-field>
     <mat-label>Brewer Name</mat-label>
     <input

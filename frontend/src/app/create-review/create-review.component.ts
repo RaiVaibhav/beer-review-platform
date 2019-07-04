@@ -52,6 +52,7 @@ export class CreateReviewComponent implements OnInit {
     );
     this.ReviewForm = new FormGroup({
       'bear': new FormControl('', Validators.required),
+      'beer_image': new FormControl('', Validators.required),
       'brewername': new FormControl('', Validators.required),
       'price': new FormControl('', Validators.compose(
         [Validators.min(0), Validators.required])
@@ -62,7 +63,13 @@ export class CreateReviewComponent implements OnInit {
         FlavorsValidators.flavorlistEmpty(this)
       ),
     });
-  }
+  };
+  onChange(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.ReviewForm.get('beer_image').setValue(file);
+    }
+  };
   addFlavor($event) {
     $event.stopPropagation();
     const tag = this.ReviewForm.controls.flavors.value;
@@ -78,8 +85,11 @@ export class CreateReviewComponent implements OnInit {
   }
   onSubmit(){
     let ReviewForm = this.ReviewForm;
+    const formData = new FormData();
+    // formData.append('file', this.ReviewForm.get('beer_image').value);
     this.review_submit = new Review(
       ReviewForm.value.bear,
+      ReviewForm.value.beer_image,
       ReviewForm.value.brewername,
       ReviewForm.value.price,
       ReviewForm.value.rating,
@@ -87,7 +97,10 @@ export class CreateReviewComponent implements OnInit {
       this.flavorsList
     )
     if (ReviewForm.valid){
-      this.httpService.createReview(this.review_submit).subscribe(
+      for ( let key in this.review_submit) {
+        formData.append(key, this.review_submit[key]);
+      }
+      this.httpService.createReview(formData).subscribe(
         (response)=>{
           this.store.dispatch(new UIActions.SnackBar(`Review created sucessfully`))
         },
