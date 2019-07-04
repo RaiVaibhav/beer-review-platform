@@ -6,7 +6,7 @@
         <mat-card-title>{{ review.bear.name }}</mat-card-title>
         <mat-card-subtitle> Bewer: {{ review.bewer_name }}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="https://images.unsplash.com/photo-1518176258769-f227c798150e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Photo of a Beer">
+      <img mat-card-image src="{{ this.httpService.domain }}{{ review.beer_image}}" alt="Photo of a Beer">
       <mat-card-content>
         <ng-container *ngFor="let i of [1,2,3,4,5]">
           <mat-icon *ngIf="i<=review.rating">star_rate</mat-icon>

@@ -15,8 +15,8 @@ import { ListReviewComponent } from '../list-review/list-review.component';
 const routes: Routes = [
   {path: '', component: WorkflowSampleRemovemeComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'verify', component: VerifyComponent, canActivate: [AuthGuard]},
-  {path: 'verify/:key', component: VerifyComponent, canActivate: [AuthGuard]},
+  {path: 'verify', component: VerifyComponent},
+  {path: 'verify/:key', component: VerifyComponent},
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'reset', component: ResetPasswordComponent},

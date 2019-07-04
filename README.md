@@ -47,3 +47,5 @@ Currently this plaatform don't give a option to upload the image of the beer dur
 - Add a feature to upload image of beer(during review) to save it on custom   server (like AWS S3) and save the mapped url in django backend.
 
 - Custome django command to populate the bear names.
+
+*Update* - Added beta version of file upload capability (using media storage)
