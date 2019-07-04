@@ -48,4 +48,32 @@ Currently this plaatform don't give a option to upload the image of the beer dur
 
 - Custome django command to populate the bear names.
 
+
 *Update* - Added beta version of file upload capability (using media storage)
+*Update* - Add s3 support for the image upload (under progress - add auth support for image url from s3) option to run it- 
+
+
+- First enable the created virtual environment, reinstall requirements using
+
+```bash
+
+$ cd backend
+$ pip install -r requirements.txt
+$ python manage.py makemigrations
+# If you are using your own database
+$ python manage.py migrate 
+# If you are using your own database
+
+```
+- First create a s3 bucket without any permission , under the                 Permissions>Access control List>Public Access>Everyone select `List objects` and save
+
+```bash
+AWS_ACCESS_KEY_ID = 'your iam access key id'
+AWS_SECRET_ACCESS_KEY = 'your iam secret access key'
+AWS_STORAGE_BUCKET_NAME = 'bucket name'
+
+```
+Add above configuration in your settings.py file of `backend` i.e., (backend>sample>settings.py)
+
+
+- Run `python manage.py runserver`

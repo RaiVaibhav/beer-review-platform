@@ -85,7 +85,6 @@ export class CreateReviewComponent implements OnInit {
   }
   onSubmit(){
     let ReviewForm = this.ReviewForm;
-    debugger;
     const formData = new FormData();
     // formData.append('file', this.ReviewForm.get('beer_image').value);
     this.review_submit = new Review(
@@ -101,13 +100,16 @@ export class CreateReviewComponent implements OnInit {
       for ( let key in this.review_submit) {
         formData.append(key, this.review_submit[key]);
       }
+      this.store.dispatch(new UIActions.StartLoading());
       this.httpService.createReview(formData).subscribe(
         (response)=>{
+          this.store.dispatch(new UIActions.StopLoading())
           this.store.dispatch(new UIActions.SnackBar(`Review created sucessfully`))
+          
         },
         (error)=>{
-          // this.store.dispatch(new UIActions.SnackBar(`Error Occured: ${error.message}`))
-          // this.router.navigate(['/']);
+          this.store.dispatch(new UIActions.StopLoading())
+          this.router.navigate(['/review-list']);
         }
       );
     }else{

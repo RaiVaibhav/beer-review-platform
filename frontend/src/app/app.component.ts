@@ -6,7 +6,7 @@ import * as fromUi from './shared/store/ui/ui.reducer';
 import { ViewEncapsulation } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as AuthActions from './auth/store/auth.actions';
-import { Router, ActivatedRoute, CanActivate } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -23,10 +23,10 @@ export class AppComponent {
       if (!jwt.isTokenExpired(token)){
         let currentUser = jwt.decodeToken(token);
         this.store.dispatch(new AuthActions.SetToken(token))
-        this.store.dispatch(new AuthActions.SetUser(currentUser))      
+        this.store.dispatch(new AuthActions.SetUser(currentUser))
       }else{
         this.store.dispatch(new AuthActions.SetToken(null))
-        this.store.dispatch(new AuthActions.SetUser(null)) 
+        this.store.dispatch(new AuthActions.SetUser(null))
         this.router.navigate(['/login']);
       }
     }
@@ -37,6 +37,4 @@ export class AppComponent {
   ngOnInit(){
     this.isLoading = this.store.select('ui')
   }
-
-
 }

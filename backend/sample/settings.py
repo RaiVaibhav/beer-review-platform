@@ -94,6 +94,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.twitter',
+    'storages',
     'review'
 ]
 
@@ -169,7 +170,13 @@ REST_FRAMEWORK = {
     ),
 }
 
-
+DEFAULT_FILE_STORAGE = 'sample.storage_backends.MediaStorage'
+AWS_ACCESS_KEY_ID = 'your access key id'
+AWS_SECRET_ACCESS_KEY = 'your iam secret acess key'
+AWS_STORAGE_BUCKET_NAME = 'bucket name'
+AWS_QUERYSTRING_AUTH = False
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+AWS_S3_FILE_OVERWRITE=True
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -193,5 +200,5 @@ STATICFILES_DIRS = [
 ]
 
 
-MEDIA_URL =  '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# MEDIA_URL =  '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
