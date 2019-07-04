@@ -33,7 +33,7 @@ export class CreateReviewComponent implements OnInit {
     {id: 1, name: "Bad"},
     {id: 2, name: "Satisfactory"},
     {id: 3, name: "Good"},
-    {id: 4, name: "Very Good"} 
+    {id: 4, name: "Very Good"},
     {id: 5, name: "Extremely Statisfied"}
   ]
   constructor(private store: Store<fromRoot.AppState>,
