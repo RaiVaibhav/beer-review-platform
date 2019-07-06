@@ -14,7 +14,8 @@ class ReviewListAPIView(APIView):
   permission_classes = (IsAuthenticated,)
   parser_class = (FileUploadParser,)
   def get(self, request, format=None):
-      reviews = Review.objects.all()
+      user = self.request.user
+      reviews = Review.objects.filter(user=user)
       serializer = ReviewListSerializer(reviews, many=True)
       return Response(serializer.data)
 
