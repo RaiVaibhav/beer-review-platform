@@ -22,7 +22,7 @@ $ cd backend
 $ pip install -r requirements.txt
 $ python manage.py makemigrations
 # If you are using your own database
-$ python manage.py migrate 
+$ python manage.py migrate
 # If you are using your own database
 ```
 (Currenlty from admin page you will have to manually create a bear names, for the testing purpose you can directly use `database` which is in root of `backend` i.e., run `python manage.py runserver` with username-`test123`    password-`qwerty@123` without migrations and migrate step)
@@ -49,3 +49,7 @@ Currently this plaatform don't give a option to upload the image of the beer dur
 - Custome django command to populate the bear names.
 
 *Update* - Added beta version of file upload capability (using media storage)
+
+### S3 Support
+
+Check the readme of branch - [s3_support](https://github.com/RaiVaibhav/beer-review-platform/tree/s3_support) or check the readme of open pull request [#1](https://github.com/RaiVaibhav/beer-review-platform/pull/1) and configure the s3 accordingly.
