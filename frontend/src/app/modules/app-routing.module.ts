@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'reset', component: ResetPasswordComponent},
   {path: 'reset/confirm', component: ResetConfirmComponent},
   {path: 'reset/confirm/:token/:uid', component: ResetConfirmComponent},
-  {path: 'change-password', component: ChangePasswordComponent,canActivate: [AuthGuard]},
+  {path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
   {path: 'create-review', component: CreateReviewComponent, canActivate: [AuthGuard]},
   {path: 'review-list', component: ListReviewComponent, canActivate: [AuthGuard]}
 ];

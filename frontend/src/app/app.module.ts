@@ -56,7 +56,7 @@ import { ListReviewComponent } from './list-review/list-review.component';
   providers: [CookieService, httpInterceptorProviders, AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   constructor() {
     library.add(faLongArrowAltDown);
     library.add(faLongArrowAltRight);

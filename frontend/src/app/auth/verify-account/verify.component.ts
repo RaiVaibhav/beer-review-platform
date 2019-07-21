@@ -4,7 +4,7 @@ import { AuthHttpService } from '../auth-http.service';
 import { ActivatedRoute } from '@angular/router';
 import * as UIActions from '../../shared/store/ui/ui.actions';
 import { Store } from '@ngrx/store';
-import * as fromRoot from '../../store/app.reducer'
+import * as fromRoot from '../../store/app.reducer';
 
 @Component({
   selector: 'app-verify',
@@ -13,40 +13,40 @@ import * as fromRoot from '../../store/app.reducer'
 })
 export class VerifyComponent implements OnInit {
 
-  keyForm: FormGroup
-  key: {}
+  keyForm: FormGroup;
+  key: {};
 
   constructor(private httpService: AuthHttpService,
               private route: ActivatedRoute,
               private store: Store<fromRoot.AppState>) { }
 
   ngOnInit() {
-    if (this.route.snapshot.params['key']){
-      this.key = {key:this.route.snapshot.params['key']};
+    if (this.route.snapshot.params['key']) {
+      this.key = {key: this.route.snapshot.params['key']};
       this.httpService.verify(this.key)
       .subscribe(response => {
-        this.store.dispatch(new UIActions.SnackBar(`Sucessfully verified`))
+        this.store.dispatch(new UIActions.SnackBar(`Sucessfully verified`));
       },
-      (error)=>{
-        this.store.dispatch(new UIActions.SnackBar(`Error in verifying the key`))
-      })
+      (error) => {
+        this.store.dispatch(new UIActions.SnackBar(`Error in verifying the key`));
+      });
     }
 
     this.keyForm = new FormGroup({
       'key': new FormControl('', Validators.required),
-    })
+    });
   }
 
-  onSubmit(){
-    let keyForm = this.keyForm;
-    if (keyForm.valid){
+  onSubmit() {
+    const keyForm = this.keyForm;
+    if (keyForm.valid) {
       this.httpService.verify(keyForm.value)
       .subscribe(response => {
-        this.store.dispatch(new UIActions.SnackBar(`Sucessfully verified`))
+        this.store.dispatch(new UIActions.SnackBar(`Sucessfully verified`));
       },
-      (error)=>{
-        this.store.dispatch(new UIActions.SnackBar(`Error in verifying the key`))
-      })
+      (error) => {
+        this.store.dispatch(new UIActions.SnackBar(`Error in verifying the key`));
+      });
     }
   }
 }

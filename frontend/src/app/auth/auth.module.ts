@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule} from '@angular/core';
 
-//components
+// components
 
 import { ChangePasswordComponent } from './password/change/change-password.component';
 import { AuthComponent } from './auth.component';
@@ -11,14 +11,14 @@ import { ResetPasswordComponent } from './password/reset/reset-password.componen
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
-//modules
+// modules
 import { AppRoutingModule } from '../modules/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../modules/material.module';
 import { CoreModule } from '../modules/core.module';
 
-//services
+// services
 import { AuthHttpService } from './auth-http.service';
 
 

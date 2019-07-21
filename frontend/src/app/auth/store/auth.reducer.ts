@@ -6,7 +6,7 @@ export interface AuthState {
     token: String;
     authenticated: boolean;
     user: any;
-};
+}
 const initialState: AuthState = {
     token: null,
     authenticated: false,

@@ -12,7 +12,7 @@ import * as UIActions from '../../../shared/store/ui/ui.actions';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
-  resetForm: FormGroup
+  resetForm: FormGroup;
   constructor(private httpService: AuthHttpService,
               private router: Router,
               private store: Store<fromRoot.AppState>) { }
@@ -20,25 +20,25 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit() {
     this.resetForm = new FormGroup({
       'email': new FormControl('', [Validators.required, Validators.email]),
-    })
+    });
   }
 
 
-  onSubmit(){
-    let resetForm = this.resetForm;
-    let email = {
+  onSubmit() {
+    const resetForm = this.resetForm;
+    const email = {
       email: resetForm.value.email
-    }
-    if (resetForm.valid){
+    };
+    if (resetForm.valid) {
       this.httpService.reset_password(email)
-      .subscribe((response)=>{
+      .subscribe((response) => {
         this.router.navigate(['/']);
-        this.store.dispatch(new UIActions.StopLoading())
+        this.store.dispatch(new UIActions.StopLoading());
       },
-      (error)=>{
-        this.store.dispatch(new UIActions.StopLoading())
-        this.store.dispatch(new UIActions.SnackBar(`Error: ${error.error.email? error.error.email: error.message}`))
-      })
+      (error) => {
+        this.store.dispatch(new UIActions.StopLoading());
+        this.store.dispatch(new UIActions.SnackBar(`Error: ${error.error.email ? error.error.email : error.message}`));
+      });
     }
   }
 

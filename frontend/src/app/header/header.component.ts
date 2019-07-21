@@ -15,7 +15,7 @@ import { AuthGuard } from '../auth-guard.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  authState: Observable<fromAuth.AuthState>
+  authState: Observable<fromAuth.AuthState>;
 
   constructor(private cookie: CookieService,
               private store: Store<fromApp.AppState>,
@@ -26,15 +26,15 @@ export class HeaderComponent implements OnInit {
     this.authState = this.store.select('auth');
   }
 
-  logout(){
+  logout() {
     this.httpService.logout()
       .subscribe(response => {
-        if(response['detail']){
+        if (response['detail']) {
           localStorage.removeItem('token');
           this.store.dispatch(new AuthActions.SetUser(null));
-          this.store.dispatch(new AuthActions.SetToken(null))
+          this.store.dispatch(new AuthActions.SetToken(null));
         }
-      })
+      });
     this.router.navigate(['/']);
   }
 

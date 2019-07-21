@@ -1,10 +1,10 @@
 import { UserActions,
-        // TRY_CREATE_USER, 
+        // TRY_CREATE_USER,
         STORE_TOKEN} from './user.actions';
 
 export interface UserState {
   token: String;
-};
+}
 const initialState: UserState = {
   token: null,
 };

@@ -5,7 +5,7 @@ export interface State {
   headerString: string;
   editingItem: boolean;
   snackString: string;
-};
+}
 
 const initialState: State = {
   isLoading: false,

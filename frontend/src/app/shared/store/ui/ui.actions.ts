@@ -16,21 +16,21 @@ export class StopLoading implements Action {
 }
 export class ChangeHeaderTitle implements Action {
   readonly type = CHANGE_HEADER;
-  constructor(public payload: string){}
+  constructor(public payload: string) {}
 }
 
 export class EditingItem implements Action {
   readonly type = EDITING_ITEM;
-  constructor(public payload: boolean){}
+  constructor(public payload: boolean) {}
 }
 
 export class SnackBar implements Action {
   readonly type = SNACK_BAR;
-  constructor(public payload: string){}
+  constructor(public payload: string) {}
 }
 
 export type UIActions = StartLoading |
                         StopLoading |
                         ChangeHeaderTitle |
-                        EditingItem | 
+                        EditingItem |
                         SnackBar;

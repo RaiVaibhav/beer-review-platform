@@ -7,5 +7,5 @@ export class Review {
     public rating: number,
     public serving: number,
     public flavorList: string[]
-  ){}
+  ) {}
 }

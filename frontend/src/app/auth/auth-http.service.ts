@@ -5,13 +5,13 @@ import { Token } from './models/token.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import * as AuthActions from './store/auth.actions';
-import * as UIActions from'../shared/store/ui/ui.actions';
-import * as fromApp from '../store/app.reducer'
+import * as UIActions from '../shared/store/ui/ui.actions';
+import * as fromApp from '../store/app.reducer';
 
 @Injectable()
-export class AuthHttpService{
+export class AuthHttpService {
   constructor(private http: HttpClient,
-              private store: Store<fromApp.AppState>){}
+              private store: Store<fromApp.AppState>) {}
 
   private rootdomain                  =    'http://localhost:8000/';
   private domain                      =    'http://localhost:8000';
@@ -26,61 +26,61 @@ export class AuthHttpService{
   private djangoGetBears              =    this.rootdomain + 'api/bears/';
   private djangoGetCreateReview       =    this.rootdomain + 'api/reviews/';
 
-  register(user: NewUser){
-    this.store.dispatch(new UIActions.StartLoading())
+  register(user: NewUser) {
+    this.store.dispatch(new UIActions.StartLoading());
     return this.http.post<Token>(this.djangoRegister, user)
     .pipe(
       result => {
         return result;
       }
-    )
+    );
   }
-  verify(key:any){
-    return this.http.post(this.djangoVerify, key)
+  verify(key: any) {
+    return this.http.post(this.djangoVerify, key);
   }
-  login(credentials: LoginCredentials){
-    this.store.dispatch(new UIActions.StartLoading())
+  login(credentials: LoginCredentials) {
+    this.store.dispatch(new UIActions.StartLoading());
     return this.http.post<Token>(this.djangoLogin, credentials)
     .pipe(result => {
-          this.store.dispatch(new AuthActions.Signin())
+          this.store.dispatch(new AuthActions.Signin());
           return result;
         }
-    )
+    );
 
   }
-  logout(){
+  logout() {
     return this.http.post(this.djangoLogout, {})
     .pipe(
       result => {
-        this.store.dispatch(new AuthActions.Logout())
+        this.store.dispatch(new AuthActions.Logout());
         return result;
       }
-    )
-  }
-  
-  verify_token(token:any){
-    return this.http.post(this.djangoVerifyToken, token)
+    );
   }
 
-  reset_password(email){
-    this.store.dispatch(new UIActions.StartLoading())
-    return this.http.post(this.djangoResetPasswordRequest, email)
+  verify_token(token: any) {
+    return this.http.post(this.djangoVerifyToken, token);
   }
-  reset_password_confirm(resetConfirm){
-    this.store.dispatch(new UIActions.StartLoading())
-    return this.http.post(this.djangoResetPasswordConfirm, resetConfirm)
+
+  reset_password(email) {
+    this.store.dispatch(new UIActions.StartLoading());
+    return this.http.post(this.djangoResetPasswordRequest, email);
   }
-  changePassword(passwordArray){
-    this.store.dispatch(new UIActions.StartLoading())
-    return this.http.post(this.djangoChangePassword, passwordArray)
+  reset_password_confirm(resetConfirm) {
+    this.store.dispatch(new UIActions.StartLoading());
+    return this.http.post(this.djangoResetPasswordConfirm, resetConfirm);
   }
-  getBears(){
-    return this.http.get(this.djangoGetBears)
+  changePassword(passwordArray) {
+    this.store.dispatch(new UIActions.StartLoading());
+    return this.http.post(this.djangoChangePassword, passwordArray);
   }
-  createReview(data){
-    return this.http.post(this.djangoGetCreateReview, data)
+  getBears() {
+    return this.http.get(this.djangoGetBears);
   }
-  getReviews(){
+  createReview(data) {
+    return this.http.post(this.djangoGetCreateReview, data);
+  }
+  getReviews() {
     return this.http.get(this.djangoGetCreateReview);
   }
 }

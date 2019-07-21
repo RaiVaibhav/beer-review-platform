@@ -4,7 +4,7 @@ export const STORE_TOKEN = '[User] Add Verify Token';
 
 export class StoreToken implements Action {
   readonly type = STORE_TOKEN;
-  constructor(public payload: String){
+  constructor(public payload: String) {
   }
 }
 

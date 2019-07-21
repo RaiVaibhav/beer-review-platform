@@ -14,14 +14,14 @@ import { Observable } from 'rxjs';
 })
 export class WorkflowSampleRemovemeComponent implements OnInit {
   token: String;
-  authState: Observable<fromAuth.AuthState>
+  authState: Observable<fromAuth.AuthState>;
 
   constructor(private store: Store<fromRoot.AppState>,
               private httpService: AuthHttpService,
-              private cookie: CookieService,) { }
+              private cookie: CookieService, ) { }
 
   ngOnInit() {
     this.authState = this.store.select('auth');
   }
 
-}//landingcomponent
+}// landingcomponent

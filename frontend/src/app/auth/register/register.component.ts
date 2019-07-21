@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NewUser } from '../models/newUser.model';
 import { Store } from '@ngrx/store';
-import * as fromRoot from '../../store/app.reducer'
+import * as fromRoot from '../../store/app.reducer';
 import * as UI from '../../shared/store/ui/ui.actions';
 import { Router } from '@angular/router';
 import { AuthHttpService } from '../auth-http.service';
@@ -15,14 +15,14 @@ import * as UIActions from '../../shared/store/ui/ui.actions';
 })
 export class RegisterComponent implements OnInit {
 
-  signupForm: FormGroup
-  user_submit: NewUser
-  user: NewUser
-  mystore = this.store
+  signupForm: FormGroup;
+  user_submit: NewUser;
+  user: NewUser;
+  mystore = this.store;
 
   constructor(private store: Store<fromRoot.AppState>,
               private router: Router,
-              private httpService: AuthHttpService,) { }
+              private httpService: AuthHttpService, ) { }
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -30,31 +30,31 @@ export class RegisterComponent implements OnInit {
       'username': new FormControl('', Validators.required),
       'password1': new FormControl('', Validators.required),
       'password2': new FormControl('', Validators.required),
-    })
-  }//ngOnInit()
+    });
+  }// ngOnInit()
 
-  onSubmit(){
-    let signupForm = this.signupForm;
-    if (signupForm.valid){
-      
+  onSubmit() {
+    const signupForm = this.signupForm;
+    if (signupForm.valid) {
+
       this.user_submit = new NewUser(
         signupForm.value.username,
         signupForm.value.password1,
         signupForm.value.password2,
         signupForm.value.email,
-      )
+      );
       this.httpService.register(this.user_submit)
         .subscribe(
-          (response)=>{
+          (response) => {
             this.store.dispatch(new UI.StopLoading());
             this.store.dispatch(new UIActions.SnackBar(`Verification email has been send`));
           },
-          (err)=>{
+          (err) => {
             this.store.dispatch(new UI.StopLoading()),
-            this.store.dispatch(new UIActions.SnackBar(`Error: ${err.error.email? err.error.email: err.error.username}`));
+            this.store.dispatch(new UIActions.SnackBar(`Error: ${err.error.email ? err.error.email : err.error.username}`));
           });
-    }else{
-      this.store.dispatch(new UIActions.SnackBar(`Please enter the valid values`))
+    } else {
+      this.store.dispatch(new UIActions.SnackBar(`Please enter the valid values`));
     }
   }
 }

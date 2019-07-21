@@ -9,7 +9,7 @@ import * as fromRoot from '../../store/app.reducer';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  authState: Observable<fromAuth.AuthState>
+  authState: Observable<fromAuth.AuthState>;
 
   constructor(private store: Store<fromRoot.AppState>) { }
 
